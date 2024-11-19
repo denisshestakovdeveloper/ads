@@ -1,0 +1,19 @@
+<div class="row">
+    <p class="fw-light">{{ad.category_id.name}}</p>
+</div>
+
+{% if ad.main_picture == "" %}
+    <img src="/static/images/default.svg" width="120" height="100" alt="{{ad.name}}">
+{% else%}
+    <img src="/static/ads_images/{{ad.main_picture}}" onerror="this.onerror=null; this.src='/static/ads_images/default.svg'" width="120" height="100" alt="{{ad.name}}">
+{% endif %}
+
+<div class="row product-name">
+    <div>{{ad.name}}</div>
+</div>
+<div class="row my-2 product-description">
+    <div>{{ad.decription}}</div>
+</div>
+<div class="row my-2">
+    <p class="fw-bold fs-6">{{ad.price}}</p>
+</div>

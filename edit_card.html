@@ -1,0 +1,150 @@
+{% extends "index.html" %}
+{% block find %}{% endblock find %}
+{% block category %}{% endblock category %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/ad_card_styles.css">
+<div class = "container mt-4">
+
+    <div class="row mx-2 text-center bg-success p-2" style="--bs-bg-opacity: .3;">
+        {% if not ad == None %}
+            <h2 class="private-header2-text">Редактирование объявления</h2>
+        {% else %}
+            <h2 class="private-header2-text">Добавление объявления</h2>
+        {% endif %}
+    </div>
+
+    <div class="row mb-4 my-2">
+        {% for photo in pictures %}
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-8 rounded">
+                                <img width="120" height="100" src="/static/ads_images/{{photo.file_name}}" alt="{{photo.file_name}}">
+                            </div>
+                            <div class="col-4 rounded text-center">
+                                <a href="#" onclick="confirmNavigation('{% url 'delete_image' id_card=ad.id id_picture=photo.id %}')" >
+                                    <img src="/static/images/delete_picture.svg" width="30" height="30" alt="Удалить">
+                                </a>
+
+                                <p></p>
+
+                                {% if ad.main_picture == photo.file_name %}
+                                    <img src="/static/images/star_filled.svg" width="30" height="30" alt="Основное изображение">
+                                {% else %}
+                                    <a href="{% url 'make_image_main' id_card=ad.id id_picture=photo.id %}" >
+                                        <img src="/static/images/star_empty.svg" width="30" height="30" alt="Сделать основным">
+                                    </a>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+    <div class="row my-5">
+        {% if not ad == None %}
+            <div class="card">
+                <div class="card-body">
+                    <h3>Добавить новое изображение</h3>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form_add_picture.as_p }}
+                        <button name = 'button_add_image' type="submit">Добавить изображение</button>
+                    </form>
+                </div>
+            </div>
+        {% else %}
+            <span class="private_info_text">Изображения можно будет добавить после записи данных карточки объявления</span>
+        {% endif %}
+    </div>
+
+    <div class="row my-2">
+        <div class="col-6">
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="row my-2">
+                    <div class="col-2 rounded">
+                        Тип товара в объявлении
+                    </div>
+                    <div class="col-2 rounded">
+                        {{ form_edit_card.type_id}}
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col-2 rounded">
+                        Категория
+                    </div>
+                    <div class="col-2 rounded">
+                        {{ form_edit_card.category_id}}
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col-2 rounded">
+                        Название объявления
+                    </div>
+                    <div class="col-2 rounded">
+                        {{ form_edit_card.name}}
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-2 rounded">
+                        Описание объявления
+                    </div>
+                    <div class="col-2 rounded">
+                        {{ form_edit_card.decription}}
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-2 rounded">
+                        Цена
+                    </div>
+                    <div class="col-2 rounded">
+                        {{ form_edit_card.price}}
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col-2 rounded">
+                    </div>
+                    <div class="col-3 rounded">
+                        <div class="row my-2 btn_edit_card">
+                            <button name = 'button_save_card' class="btn btn-info justify-content-center d-flex align-items-center" type="submit"><span class="private-button-text">Сохранить</span></button>
+                        </div>
+                    </div>
+
+                    {% if not ad == None %}
+                        {% if not ad.is_active %}
+                            <div class="col-3 mx-3 rounded">
+                                <div class="row my-2 btn_edit_card">
+                                    <a href="{% url 'publish_ad' id_card=ad.id %}" class="btn btn-info justify-content-center d-flex align-items-center" role="button"><span class="private-button-text">Разместить</span></a>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="col-3 mx-3 rounded">
+                                <div class="row my-2 btn_edit_card">
+                                    <a href="{% url 'unpublish_ad' id_card=ad.id %}" class="btn btn-info justify-content-center d-flex align-items-center" role="button"><span class="private-button-text">Снять</span></a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+
+                </div>
+            </form>
+        </div>
+        <div class="col-6">
+        </div>
+    </div>
+
+
+</div>
+<script src="/static/js/edit_card.js"></script>
+{% endblock content %}

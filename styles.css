@@ -1,0 +1,116 @@
+body h1 {color: green;}
+
+.fix {
+  width: 200px;
+  height: 200px;
+  background: #000;
+}
+
+.button {
+    background-color: #FFFFE0;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+  }
+.button_ad {
+    background-color: #FFFFFF;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+  }
+
+  body, html {
+            height: 100%;
+            margin: 0;
+    }
+.fullscreen-bg {
+    background-color: rgba(255, 255, 146, 0.5);
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.content-container {
+    width: 90%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.sectionHeight {
+    height: 12vh;
+    width: auto
+}
+
+.btn_edit_card {
+    height: 8vh;
+    width: auto
+}
+
+.form_btn{
+    font-size: 1.8vh;
+    color: rgba(0,0,0);
+    font-family: 'Verdana';
+}
+
+.private-button-text{
+    font-size: 2.5vh;
+    color: rgba(255,255,255);
+    font-family: 'Verdana';
+}
+
+.private-header2-text{
+    font-size: 25px; /* Установите размер шрифта */
+    color: rgba(255,255,240);
+    font-family: 'Verdana';
+}
+
+.private-text-not_published{
+    font-size: 2vh;
+    color: rgba(100,0,0);
+    font-family: 'Verdana';
+}
+.private-text-published{
+    font-size: 2vh;
+    color: rgba(34,139,34);
+    font-family: 'Verdana';
+}
+
+        .product-image {
+            height: 100px; /* фиксированная высота для изображения */
+            width: 120px;
+            object-fit: cover; /* сохраняет пропорции */
+            background-color: #f8f9fa; /* цвет фона на случай отсутствия картинки */
+        }
+
+.product-name {
+    font-size: 1.8vh;
+    color: rgba(34,139,34);
+    font-family: 'Verdana';
+
+    height: 50px; /* фиксированная высота для описания */
+    overflow: hidden; /* скрывать лишний текст */
+    text-overflow: ellipsis; /* многоточие для переполнения */
+}
+
+.product-description {
+    font-size: 1.3vh;
+    color: rgba(0,0,0);
+    font-family: 'Verdana';
+
+    height: 50px; /* фиксированная высота для описания */
+    overflow: hidden; /* скрывать лишний текст */
+    text-overflow: ellipsis; /* многоточие для переполнения */
+}

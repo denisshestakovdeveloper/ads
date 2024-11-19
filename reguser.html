@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+{% block find %}{% endblock find %}
+{% block category %}{% endblock category %}
+{% block content %}
+<form method = "post">
+    {% csrf_token %}
+    {{ reguser_form.as_p }}
+    <button type = "submit">Зарегистрироваться</button>
+</form>
+{% endblock content %}

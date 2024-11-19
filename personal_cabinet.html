@@ -1,0 +1,70 @@
+{% extends "index.html" %}
+
+{% block category %}
+{% endblock category %}
+
+{% block content %}
+    <div class = "container">
+        <div class="row mx-2 text-center bg-success p-2" style="--bs-bg-opacity: .3;">
+            <h2 class="private-header2-text">Личный кабинет пользователя</h2>
+        </div>
+        <div class="row my-2">
+            <div class="col-9">
+                <div class="row mу-5" >
+                    <h4 class="">Ваши объявления:</h4>
+                </div>
+                <div class="row my-2">
+                    {% for ad in ads_by_user %}
+                        <div class="col-2 my-2 mx-2 border text-center">
+
+                            {% include 'main\card.html' %}
+
+                            {% if ad.published and ad.is_active%}
+                                <span class = 'private-text-published'>Опубликовано</span>
+                            {% elif  ad.published and not ad.is_active%}
+                                <span class = 'private-text-not_published'>Снято с публикации</span>
+                            {% else %}
+                                <div class="row">
+                                    <span class = 'private-text-not_published'>Черновик</span>
+                                </div>
+                            {% endif %}
+
+                            <div class="row">
+                                <p></p>
+                            </div>
+
+                            <div class="row my-2">
+                                <a href="{% url 'edit_ad' id=ad.id %}" class = "button_ad rounded">
+                                    Редактировать
+                                </a>
+                                {% if not ad.published%}
+                                <a class = "button_ad rounded" href="#" onclick="confirmDeleteCard('{% url 'delete_card' id_card=ad.id %}')" >
+                                    Удалить
+                                </a>
+                                {% endif %}
+                            </div>
+
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="row my-2">
+                    <div class="col-8">
+                        <div class="row my-2 sectionHeight">
+                            <a href="{% url 'add_ad' %}" class="btn btn-info justify-content-center d-flex align-items-center" role="button"><span class="private-button-text">Добавить объявление</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-8">
+                        <div class="row my-2 sectionHeight">
+                            <a href="{% url 'add_ad' %}" class="btn btn-info justify-content-center d-flex align-items-center" role="button"><span class="private-button-text">Настройки пользователя</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="/static/js/personal_cabinet.js"></script>
+{% endblock content %}

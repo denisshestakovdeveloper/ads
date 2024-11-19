@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+{% block find %}{% endblock find %}
+{% block category %}{% endblock category %}
+{% block content %}
+<form method = "post">
+    {% csrf_token %}
+    {{form.username.label}}
+    {{form.username}}
+    {{form.password.label}}
+    {{form.password}}
+    <button type = "submit">Авторизоваться</button>
+</form>
+<a href='/reguser'>Зарегистрироваться</a>
+{% endblock content %}

@@ -1,0 +1,67 @@
+{% extends "index.html" %}
+{% block find %} {% include 'main/find.html' %} {% endblock find %}
+{% block category %} {% include 'main/catigories.html' %} {% endblock category %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/ad_card_styles.css">
+<div class = "container-fluid p-1 bg-light text-red text-center">
+    <div class="row my-2">
+        <div class="col-2 rounded">
+        </div>
+<div class="row my-2 justify-content-center">
+    <div class="col-md-8">
+        <div class="card text-center">
+            <div class="card-header">
+                {{ad.name}}
+            </div>
+            <div class="card-body d-flex">
+                <div class="col-md-7 text-left">
+                    <button class = 'button_arrow' id="prevBtn">
+                        <img src = "/static/images/arrow_left.svg" width="20" height="20">️
+                    </button>
+                    <img class = 'img_ad' id="photo" src="" width="340" height="300" alt="{{ad.name}}" onclick="displayModal(this);">
+                    <button class = 'button_arrow' id="nextBtn">
+                        <img src = "/static/images/arrow_right.svg" width="20" height="20">️
+                    </button>
+                </div>
+                <div class="col-md-5 text-left">
+                    <h5 class="card-title text-left">Цена: {{ad.price}} руб.</h5>
+                    <p class="card-text text-left">{{ad.decription}}</p>
+                    <p class="card-text text-left">{{ad.author_id.surname}} {{ad.author_id.firstname}} {{ad.author_id.secondname}}</p>
+                    <p class="card-text text-left">    Телефон: {{ad.author_id.phone}}</p>
+
+                    <form action="/fast_payment/" target="_blank" method="get">
+                        <div class="row my-2">
+                            <div class="col-md-12">
+                                <button class="btn btn-primary mb-2"><span class="private-button-text">Быстрая покупка</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="modal" class="modal" onclick="hideModal();">
+            <span class="close">&times;</span>
+            <div class="modal-content">
+                <img id="modal-image" width="440" height="400">
+            </div>
+        </div>
+
+        <div class="col-2 rounded">
+        </div>
+
+    </div>
+</div>
+ <script>
+    const photos = [
+        {% for photo in pictures %}
+            "/static/ads_images/{{ photo.file_name }}"{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ];
+</script>
+<script src="/static/js/ad_card.js"></script>
+{% endblock content %}

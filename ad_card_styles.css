@@ -1,0 +1,100 @@
+.button_arrow {
+    background-color: #FFFFE0;
+    color: red;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 0 20px;
+    border-radius: 5px;
+    height:50px;
+}
+
+.button_arrow:hover {
+    background-color: #FFFFA0;
+}
+
+.img_ad {
+    border: 1px solid #007BFF;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 70%;
+}
+
+.img_ad:hover {
+            opacity: 0.7;
+        }
+
+.ad_card_text1{
+    font-size: 20px;
+    color: black
+}
+
+.ad_card_text2{
+    font-size: 15px;
+    color: black
+}
+
+ /* Стили для модального окна */
+        .modal {
+            display: none;
+            /* По умолчанию скрыто */
+            position: fixed;
+            /* Фиксированное положение */
+            z-index: 1;
+            /* Верхний уровень */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Полная ширина */
+            height: 100%;
+            /* Полная высота */
+            overflow: auto;
+            /* Включить прокрутку, если необходимо */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Черный цвет с прозрачностью */
+        }
+
+        .modal-content {
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            max-width: 700px;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Стили для изображения */
+        .ad_img {
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .ad_img:hover {
+            opacity: 0.7;
+        }
+
+        .images {
+            width: 450px;
+            display: flex;
+        }
+
+        .text-left {
+    text-align: left;
+
+}
+
+.private_info_text{
+    font-size: 2vh;
+    color: rgba(34,139,34);
+    font-family: 'Verdana';
+}
+

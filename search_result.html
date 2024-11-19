@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% block find %} {% include 'main/find.html' %} {% endblock find %}
+{% block category%}{% endblock category %}
+{% block content %}
+
+<div class = "container-fluid p-1 bg-light text-red text-center">
+    <div class="row my-2">
+        {% for ad in ads %}
+            <div class="col-2 rounded">
+                <a href="{% url 'open_ad' id=ad.id %}" class = "button_ad rounded">
+                    <p class="fw-light">{{ad.category_id.name}}</p>
+                    <img src="static/ads_images/{{ad.main_picture}}" width="120" height="100" alt="{{ad.name}}">
+                    <div class="product-description">{{ad.name}}</div>
+                    <p class="fw-bold fs-6">{{ad.price}}</p>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
